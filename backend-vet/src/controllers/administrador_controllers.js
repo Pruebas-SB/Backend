@@ -134,12 +134,14 @@ const login = async (req, res) => {
 
 const verAdministradores = async (req, res) => {
     try {
-        const admins = await Administrador.find()
-        res.status(200).json(admins)
+        const admins = await Administrador.find();
+        res.status(200).json(admins);
     } catch (error) {
-        res.status(500).json({ msg: "Error al obtener administradores" })
+        console.error("Error al obtener administradores:", error); // <-- esto es clave
+        res.status(500).json({ msg: "Error al obtener administradores" });
     }
-}
+};
+
 
 const actualizarAdministrador = async (req, res) => {
     const { id } = req.params
